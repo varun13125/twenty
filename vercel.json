@@ -1,7 +1,7 @@
 {
   "buildCommand": "cd packages/twenty-front && yarn build",
   "outputDirectory": "packages/twenty-front/build",
-  "installCommand": "yarn install --frozen-lockfile",
+  "installCommand": "yarn install --immutable",
   "framework": "vite",
   "env": {
     "NODE_ENV": "production",
