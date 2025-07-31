@@ -1,7 +1,7 @@
 {
-  "buildCommand": "yarn install && cd packages/twenty-front && yarn build",
+  "buildCommand": "chmod +x build-vercel.sh && ./build-vercel.sh",
   "outputDirectory": "packages/twenty-front/build",
-  "installCommand": "yarn install",
+  "installCommand": "echo 'Installation handled by build script'",
   "framework": "vite",
   "env": {
     "NODE_ENV": "production",
