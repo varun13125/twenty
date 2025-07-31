@@ -13,7 +13,7 @@ export NODE_OPTIONS="--max-old-space-size=8192"
 
 # Install dependencies with yarn
 echo "Installing dependencies..."
-yarn install --mode=update-lockfile
+yarn install
 
 # Build the frontend package
 echo "Building twenty-front package..."
