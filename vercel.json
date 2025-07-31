@@ -1,7 +1,7 @@
 {
-  "buildCommand": "cd packages/twenty-front && yarn build",
+  "buildCommand": "yarn install && cd packages/twenty-front && yarn build",
   "outputDirectory": "packages/twenty-front/build",
-  "installCommand": "rm -f yarn.lock && yarn install",
+  "installCommand": "yarn install",
   "framework": "vite",
   "env": {
     "NODE_ENV": "production",
