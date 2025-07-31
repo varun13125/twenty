@@ -30,13 +30,6 @@
   },
   "dependencies": {
     "@blocknote/mantine": "^0.31.1",
-    "@tiptap/pm": "^2.10.4",
-    "@types/react": "^18.2.39",
-    "prettier": "^3.0.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "typescript": "5.3.3",
-    "vite": "^5.0.0",
     "@blocknote/react": "^0.31.1",
     "@blocknote/xl-docx-exporter": "^0.31.1",
     "@blocknote/xl-pdf-exporter": "^0.31.1",
