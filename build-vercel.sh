@@ -11,9 +11,9 @@ export VITE_DISABLE_TYPESCRIPT_CHECKER=true
 export VITE_DISABLE_ESLINT_CHECKER=true
 export NODE_OPTIONS="--max-old-space-size=8192"
 
-# Install dependencies with yarn
+# Install dependencies with yarn (allow lockfile updates)
 echo "Installing dependencies..."
-yarn install
+yarn install --mode=skip-build
 
 # Build the frontend package
 echo "Building twenty-front package..."
