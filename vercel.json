@@ -1,0 +1,11 @@
+{
+  "buildCommand": "cd packages/twenty-front && yarn build",
+  "outputDirectory": "packages/twenty-front/build",
+  "installCommand": "yarn install --frozen-lockfile",
+  "framework": "vite",
+  "env": {
+    "NODE_ENV": "production",
+    "VITE_DISABLE_TYPESCRIPT_CHECKER": "true",
+    "VITE_DISABLE_ESLINT_CHECKER": "true"
+  }
+} 

@@ -1,0 +1,46 @@
+{
+  "name": "twenty",
+  "$schema": "./node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "tags": ["scope:root"],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx build twenty-front",
+          "nx build twenty-website"
+        ],
+        "parallel": true
+      },
+      "dependsOn": ["^build"]
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx start twenty-front"
+      },
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx lint twenty-front",
+          "nx lint twenty-website"
+        ],
+        "parallel": true
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx test twenty-front",
+          "nx test twenty-website"
+        ],
+        "parallel": true
+      }
+    }
+  }
+} 

@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "NODE_ENV=production VITE_DISABLE_TYPESCRIPT_CHECKER=true VITE_DISABLE_ESLINT_CHECKER=true NODE_OPTIONS=--max-old-space-size=8192 npx vite build && sh ./scripts/inject-runtime-env.sh",
+    "build": "NODE_ENV=production VITE_DISABLE_TYPESCRIPT_CHECKER=true VITE_DISABLE_ESLINT_CHECKER=true NODE_OPTIONS=--max-old-space-size=8192 npx vite build",
     "build:sourcemaps": "NODE_ENV=production VITE_BUILD_SOURCEMAP=true VITE_DISABLE_TYPESCRIPT_CHECKER=true VITE_DISABLE_ESLINT_CHECKER=true NODE_OPTIONS=--max-old-space-size=8192 npx vite build && sh ./scripts/inject-runtime-env.sh",
     "start:prod": "NODE_ENV=production npx serve -s build",
     "tsup": "npx tsup"
@@ -30,6 +30,13 @@
   },
   "dependencies": {
     "@blocknote/mantine": "^0.31.1",
+    "@tiptap/pm": "^2.10.4",
+    "@types/react": "^18.2.39",
+    "prettier": "^3.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "5.3.3",
+    "vite": "^5.0.0",
     "@blocknote/react": "^0.31.1",
     "@blocknote/xl-docx-exporter": "^0.31.1",
     "@blocknote/xl-pdf-exporter": "^0.31.1",

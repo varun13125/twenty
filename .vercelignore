@@ -1,0 +1,40 @@
+# Exclude problematic packages that cause build issues
+packages/twenty-server/
+packages/twenty-docker/
+packages/twenty-e2e-testing/
+packages/twenty-chrome-extension/
+packages/twenty-zapier/
+
+# Exclude development files
+*.log
+*.test.*
+*.spec.*
+__tests__/
+test/
+tests/
+coverage/
+.nyc_output/
+
+# Exclude build artifacts
+dist/
+build/
+.next/
+out/
+
+# Exclude node modules (will be installed by Vercel)
+node_modules/
+
+# Exclude git files
+.git/
+.gitignore
+
+# Exclude documentation
+*.md
+docs/
+
+# Exclude configuration files that might cause issues
+.env*
+!.env.example
+
+# Exclude canvas package that fails to build
+node_modules/canvas/ 
