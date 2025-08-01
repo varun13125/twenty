@@ -5,6 +5,14 @@ packages/twenty-e2e-testing/
 packages/twenty-chrome-extension/
 packages/twenty-zapier/
 
+# Keep essential packages and files
+!packages/twenty-front/
+!packages/twenty-ui/
+!packages/twenty-shared/
+!packages/twenty-emails/
+!packages/twenty-utils/
+!tools/eslint-rules/
+
 # Exclude development files
 *.log
 *.test.*
@@ -37,4 +45,4 @@ docs/
 !.env.example
 
 # Exclude canvas package that fails to build
-node_modules/canvas/ 
+node_modules/canvas/
