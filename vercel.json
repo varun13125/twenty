@@ -1,11 +1,12 @@
 {
   "buildCommand": "cd packages/twenty-front && yarn build",
   "outputDirectory": "packages/twenty-front/build",
-  "installCommand": "yarn install --immutable",
+  "installCommand": "yarn install --no-immutable",
   "framework": "vite",
   "env": {
     "NODE_ENV": "production",
     "VITE_DISABLE_TYPESCRIPT_CHECKER": "true",
-    "VITE_DISABLE_ESLINT_CHECKER": "true"
+    "VITE_DISABLE_ESLINT_CHECKER": "true",
+    "YARN_ENABLE_IMMUTABLE_INSTALLS": "false"
   }
-} 
+}

@@ -1,0 +1,88 @@
+name: Sync with Upstream Twenty
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to sync'
+        required: false
+        default: 'main'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/twentyhq/twenty.git || true
+          git fetch upstream
+
+      - name: Create sync branch
+        run: |
+          SYNC_BRANCH="sync-upstream-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b $SYNC_BRANCH
+          echo "SYNC_BRANCH=$SYNC_BRANCH" >> $GITHUB_ENV
+
+      - name: Merge upstream changes
+        id: merge
+        run: |
+          git merge upstream/${{ github.event.inputs.branch || 'main' }} --no-edit || echo "MERGE_CONFLICT=true" >> $GITHUB_ENV
+
+      - name: Check for conflicts
+        if: env.MERGE_CONFLICT == 'true'
+        run: |
+          echo "::error::Merge conflicts detected. Manual resolution required."
+          git status
+          exit 1
+
+      - name: Run tests
+        if: env.MERGE_CONFLICT != 'true'
+        run: |
+          yarn install
+          yarn test
+
+      - name: Push changes
+        if: env.MERGE_CONFLICT != 'true'
+        run: |
+          git push origin ${{ env.SYNC_BRANCH }}
+
+      - name: Create Pull Request
+        if: env.MERGE_CONFLICT != 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.SYNC_BRANCH }}
+          title: 'chore: sync with upstream Twenty'
+          body: |
+            ## Automated Upstream Sync
+            
+            This PR syncs the latest changes from the upstream Twenty repository.
+            
+            ### Changes included:
+            - Latest commits from upstream/${{ github.event.inputs.branch || 'main' }}
+            
+            ### Next steps:
+            1. Review the changes
+            2. Run tests locally
+            3. Deploy to staging for verification
+            4. Merge when ready
+            
+            ---
+            *This PR was automatically created by the sync workflow.*
+          labels: |
+            upstream-sync
+            automated
