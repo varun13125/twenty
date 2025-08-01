@@ -1,12 +1,13 @@
 {
-  "buildCommand": "cd packages/twenty-front && yarn build",
+  "buildCommand": "npx nx build twenty-front --skip-nx-cache",
   "outputDirectory": "packages/twenty-front/build",
-  "installCommand": "yarn install --no-immutable",
+  "installCommand": "yarn install --no-immutable --ignore-optional",
   "framework": "vite",
   "env": {
     "NODE_ENV": "production",
     "VITE_DISABLE_TYPESCRIPT_CHECKER": "true",
     "VITE_DISABLE_ESLINT_CHECKER": "true",
-    "YARN_ENABLE_IMMUTABLE_INSTALLS": "false"
+    "YARN_ENABLE_IMMUTABLE_INSTALLS": "false",
+    "NODE_OPTIONS": "--max-old-space-size=4096"
   }
 }

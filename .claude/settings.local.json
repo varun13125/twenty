@@ -6,7 +6,8 @@
       "Bash(where npm)",
       "Bash(corepack enable)",
       "Bash(mkdir:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git push:*)"
     ],
     "deny": []
   }

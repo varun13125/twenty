@@ -37,6 +37,39 @@ git push
 }
 ```
 
+### 3. Canvas Package Build Failures
+
+**Error**: `canvas@npm:3.1.0 couldn't be built successfully` or `Package 'pixman-1', required by 'virtual:world', not found`
+
+**Solution**:
+```json
+// package.json
+{
+  "optionalDependencies": {
+    "canvas": "^3.1.0"
+  }
+}
+```
+
+**Install command**:
+```bash
+yarn install --no-immutable --ignore-optional
+```
+
+### 4. Missing twenty-shared Dependencies
+
+**Error**: `Cannot find module '/vercel/path0/node_modules/twenty-shared/translations/dist/twenty-shared-translations.cjs.js'`
+
+**Solution**:
+```json
+// vercel.json
+{
+  "buildCommand": "npx nx build twenty-front --skip-nx-cache"
+}
+```
+
+This uses Nx's built-in dependency resolution to build required packages first.
+
 ### 3. Database Connection Failures
 
 **Error**: `ECONNREFUSED` or `timeout`
